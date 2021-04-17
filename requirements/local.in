@@ -1,0 +1,17 @@
+# Packages used just for development
+-r base.in
+
+# Tools for provision
+invoke
+click
+termcolor
+
+# iPython tools
+ipdb
+ipython
+
+# Coding style
+flake8
+
+# Imports sorting
+isort

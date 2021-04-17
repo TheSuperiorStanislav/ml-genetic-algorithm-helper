@@ -1,0 +1,2 @@
+# dependencies specific for remote run
+-r base.in

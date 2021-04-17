@@ -1,0 +1,8 @@
+#!/bin/bash
+declare -i errors
+
+inv git.pre-push
+errors=$?
+if [[ "$errors" != 0 ]]; then
+    exit 1
+fi

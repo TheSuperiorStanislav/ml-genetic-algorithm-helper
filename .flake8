@@ -1,0 +1,6 @@
+[flake8]
+# F403: using wildcard imports (from … import *)
+# F405: name may be undefined, or defined from star imports: module
+ignore = F403, F405
+exclude = config, .venv, venv
+max-line-length = 79

@@ -1,0 +1,6 @@
+[tool.isort]
+line_length=100
+multi_line_output=3
+skip='.venv, venv'
+sections='FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER'
+include_trailing_comma=true
