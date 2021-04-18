@@ -52,7 +52,7 @@ class ChoicesSpecies(NumberSpecies):
         }
         super().__init__(
             lower_border=0,
-            upper_border=len(self.choices_map),
+            upper_border=len(self.choices_map) - 1,
             arg_name=arg_name,
         )
 

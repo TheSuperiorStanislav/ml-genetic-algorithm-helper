@@ -18,8 +18,11 @@ class Individual:
 
     def _generate_genes(self):
         return [
-            random.uniform(
-                a=self.species.lower_border, b=self.species.upper_border
+            Gene(
+                value=random.uniform(
+                    a=self.species.lower_border,
+                    b=self.species.upper_border,
+                )
             )
             for _ in range(self.species.gene_size)
         ]
@@ -43,10 +46,10 @@ class Individual:
         species: Species = individuals[0].species
         mated_genes = (
             Gene.mate(
-                lower_border=species.lower_border,
-                upper_border=species.upper_border,
+                species.lower_border,
+                species.upper_border,
                 *gene_group,
             )
             for gene_group in zip(*genes)
         )
-        return cls.__init__(species=species, genes=mated_genes)
+        return cls(species=species, genes=mated_genes)

@@ -43,7 +43,7 @@ class Population:
     @cached_property
     def sorted_by_fitness(self):
         """Sort by fitness function from worst ot best."""
-        return sorted(self, reverse=True)
+        return sorted(self, reverse=False)
 
     @cached_property
     def best(self) -> IndividualGroup:

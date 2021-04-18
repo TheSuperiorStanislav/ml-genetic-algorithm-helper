@@ -130,3 +130,5 @@ dmypy.json
 
 .idea
 dev_folder/
+test_notebook.ipynb
+test_example.py
