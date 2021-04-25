@@ -44,7 +44,7 @@ class Gene:
         # Check max-min
         if gene.value > upper_border:
             return Gene(value=upper_border)
-        elif gene.value < lower_border:
+        elif gene.value < lower_border or not isinstance(value, (int, float)):
             return Gene(value=lower_border)
         return gene
 
@@ -59,7 +59,7 @@ class Gene:
             random.choice(nums)
             for nums in zip(*chromosomes)
         )
-        return chromosome
+        return ''.join(chromosome)
 
     @property
     def chromosome(self) -> str:

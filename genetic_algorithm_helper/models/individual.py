@@ -1,5 +1,4 @@
 import random
-from functools import cached_property
 
 from .gene import Gene
 
@@ -16,8 +15,11 @@ class Individual:
         self.species: Species = species
         self.genes: list[Gene] = genes if genes else self._generate_genes()
 
+    def __repr__(self):
+        return f'Individual `{self.species.arg_name}={self.value}`'
+
     def _generate_genes(self):
-        return [
+        return list(
             Gene(
                 value=random.uniform(
                     a=self.species.lower_border,
@@ -25,9 +27,9 @@ class Individual:
                 )
             )
             for _ in range(self.species.gene_size)
-        ]
+        )
 
-    @cached_property
+    @property
     def value(self):
         """Get value of individual."""
         return self.species.get_individual_value(self)
@@ -44,7 +46,7 @@ class Individual:
             for individual in individuals
         )
         species: Species = individuals[0].species
-        mated_genes = (
+        mated_genes = list(
             Gene.mate(
                 species.lower_border,
                 species.upper_border,

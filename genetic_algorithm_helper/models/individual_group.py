@@ -1,4 +1,5 @@
 import typing
+from pprint import pformat
 
 from .individual import Individual
 
@@ -8,15 +9,15 @@ class IndividualGroup:
         self,
         fitness_func: typing.Callable,
         individuals: list[Individual],
-        mutate_chance=0.05,
+        mutate_chance: float = 0.05,
     ):
-        self.fitness_func = fitness_func
-        self.individuals = individuals
-        self.mutate_chance = mutate_chance
+        self.fitness_func: typing.Callable = fitness_func
+        self.individuals: list[Individual] = individuals
+        self.mutate_chance: float = mutate_chance
         self._fitness = None
 
     def __repr__(self):
-        return f'Value {self.fitness} Group: {self.individuals}'
+        return f'Value {self.fitness} Group: \n{pformat(self.individuals)}'
 
     def __getitem__(self, item):
         return self.individuals[item]

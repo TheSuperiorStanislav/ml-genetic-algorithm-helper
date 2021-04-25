@@ -32,6 +32,13 @@ class NumberSpecies(Species):
         return super().get_individual_value(individual)[0]
 
 
+class IntSpecies(NumberSpecies):
+    """"""
+
+    def get_individual_value(self, individual: Individual) -> float:
+        return round(super().get_individual_value(individual))
+
+
 class BoolSpecies(NumberSpecies):
     """"""
 

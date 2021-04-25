@@ -1,6 +1,5 @@
 import random
 import typing
-from functools import cached_property
 
 from .individual import Individual
 from .individual_group import IndividualGroup
@@ -25,6 +24,9 @@ class Population:
         )
         self.mutate_chance: float = mutate_chance
 
+    def __repr__(self):
+        return f'Population Best: {self.best} Worst: {self.worst}'
+
     def __getitem__(self, item):
         return self.individual_groups[item]
 
@@ -40,17 +42,18 @@ class Population:
             for _ in range(self.size)
         ]
 
-    @cached_property
+    @property
     def sorted_by_fitness(self):
         """Sort by fitness function from worst ot best."""
-        return sorted(self, reverse=False)
+        self.individual_groups.sort(reverse=False)
+        return self.individual_groups
 
-    @cached_property
+    @property
     def best(self) -> IndividualGroup:
         """Get best group in population."""
         return self.sorted_by_fitness[-1]
 
-    @cached_property
+    @property
     def worst(self) -> IndividualGroup:
         """Get worst group in population."""
         return self.sorted_by_fitness[0]
