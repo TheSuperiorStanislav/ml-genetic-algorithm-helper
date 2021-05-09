@@ -12,11 +12,7 @@ class Gene:
     """
     length = 32
 
-    def __init__(
-        self,
-        value,
-        mutate_chance: float = 0.05,
-    ):
+    def __init__(self, value, mutate_chance: float = 0.05):
         self.mutate_chance = mutate_chance
         self.value = value
 
@@ -28,10 +24,7 @@ class Gene:
 
     @classmethod
     def mate(
-        cls,
-        lower_border: float,
-        upper_border: float,
-        *genes: 'Gene'
+        cls, lower_border: float, upper_border: float, *genes: 'Gene' 
     ) -> 'Gene':
         """Mate genes."""
         chromosome = cls._mate_chromosomes(*genes)
@@ -51,14 +44,8 @@ class Gene:
     @staticmethod
     def _mate_chromosomes(*genes: 'Gene') -> int:
         """Mate chromosomes of genes."""
-        chromosomes = (
-            gene.chromosome
-            for gene in genes
-        )
-        chromosome = list(
-            random.choice(nums)
-            for nums in zip(*chromosomes)
-        )
+        chromosomes = (gene.chromosome for gene in genes)
+        chromosome = list(random.choice(nums) for nums in zip(*chromosomes))
         return ''.join(chromosome)
 
     @property
