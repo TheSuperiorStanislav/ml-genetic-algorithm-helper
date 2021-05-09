@@ -8,12 +8,9 @@ from .species import Species
 
 class Population:
     def __init__(
-        self,
-        fitness_func: typing.Callable,
-        size: int,
-        species_list: list[Species],
-        individual_groups: list[IndividualGroup] = None,
-        mutate_chance: float = 0.05,
+        self, fitness_func: typing.Callable,
+        size: int, species_list: list[Species],
+        individual_groups: list[IndividualGroup] = None,  mutate_chance: float = 0.05,
     ):
         self.fitness_func: typing.Callable = fitness_func
         self.size: int = size
@@ -74,7 +71,6 @@ class Population:
         )
 
         return Population(
-            size=self.size, fitness_func=self.fitness_func,
-            species_list=self.species_list, individual_groups=new_generation, 
-            mutate_chance=self.mutate_chance,
+            size=self.size, fitness_func=self.fitness_func, species_list=self.species_list, 
+            individual_groups=new_generation, mutate_chance=self.mutate_chance,
         )
