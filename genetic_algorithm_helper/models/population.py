@@ -27,15 +27,9 @@ class Population:
         return self.individual_groups[item]
 
     def _generate_initial_population(self):
-        return [
-            IndividualGroup(
-                individuals=[
-                    Individual(species=species)
-                    for species in self.species_list
-                ],
-                fitness_func=self.fitness_func,
-            ) for _ in range(self.size)
-        ]
+        return [IndividualGroup(
+                individuals=[Individual(species=species) for species in self.species_list],
+                fitness_func=self.fitness_func) for _ in range(self.size)]
 
     @property
     def sorted_by_fitness(self):
@@ -56,10 +50,8 @@ class Population:
     @property
     def selection(self):
         ranked = self.sorted_by_fitness
-        selected = [
-            group for index, group in enumerate(ranked, start=1)
-            if index / len(ranked) >= random.random()
-        ]
+        selected = [group for index, group in enumerate(ranked, start=1)
+                    if index / len(ranked) >= random.random()]
         return selected
 
     def crossover(self) -> 'Population':
@@ -69,7 +61,6 @@ class Population:
             IndividualGroup.mate(*random.choices(selected, k=2))
             for _ in range(len(self.individual_groups))
         )
-
         return Population(
             size=self.size, fitness_func=self.fitness_func, species_list=self.species_list, 
             individual_groups=new_generation, mutate_chance=self.mutate_chance,
