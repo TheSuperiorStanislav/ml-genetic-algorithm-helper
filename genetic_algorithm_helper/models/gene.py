@@ -4,12 +4,7 @@ from bitstring import BitArray
 
 
 class Gene:
-    """Represents gene in individual.
-
-    Each gene is coded by using binary code. For example:
-    1.16 -> 00000000000000000000000000000001.00000000000000000000000000001000
-
-    """
+    """Represents gene in individual."""
     length = 32
 
     def __init__(self, value, mutate_chance: float = 0.05):
