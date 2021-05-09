@@ -19,8 +19,7 @@ class Population:
         self.size: int = size
         self.species_list: list[Species] = species_list
         self.individual_groups: list[IndividualGroup] = (
-            individual_groups if individual_groups
-            else self._generate_initial_population()
+            individual_groups if individual_groups else self._generate_initial_population()
         )
         self.mutate_chance: float = mutate_chance
 
@@ -38,8 +37,7 @@ class Population:
                     for species in self.species_list
                 ],
                 fitness_func=self.fitness_func,
-            )
-            for _ in range(self.size)
+            ) for _ in range(self.size)
         ]
 
     @property
@@ -62,8 +60,7 @@ class Population:
     def selection(self):
         ranked = self.sorted_by_fitness
         selected = [
-            group
-            for index, group in enumerate(ranked, start=1)
+            group for index, group in enumerate(ranked, start=1)
             if index / len(ranked) >= random.random()
         ]
         return selected
@@ -77,9 +74,7 @@ class Population:
         )
 
         return Population(
-            size=self.size,
-            fitness_func=self.fitness_func,
-            species_list=self.species_list,
-            individual_groups=new_generation,
+            size=self.size, fitness_func=self.fitness_func,
+            species_list=self.species_list, individual_groups=new_generation, 
             mutate_chance=self.mutate_chance,
         )
