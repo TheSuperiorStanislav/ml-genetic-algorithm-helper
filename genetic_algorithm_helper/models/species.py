@@ -2,7 +2,6 @@ from .individual import Individual
 
 
 class Species:
-    """"""
     GENE_SIZE = None
 
     def __init__(
@@ -25,7 +24,6 @@ class Species:
 
 
 class NumberSpecies(Species):
-    """"""
     GENE_SIZE = 1
 
     def get_individual_value(self, individual: Individual) -> float:
@@ -33,15 +31,11 @@ class NumberSpecies(Species):
 
 
 class IntSpecies(NumberSpecies):
-    """"""
-
     def get_individual_value(self, individual: Individual) -> float:
         return round(super().get_individual_value(individual))
 
 
 class BoolSpecies(NumberSpecies):
-    """"""
-
     def __init__(self, arg_name: str):
         super().__init__(arg_name=arg_name, lower_border=-1, upper_border=1)
 
@@ -51,8 +45,6 @@ class BoolSpecies(NumberSpecies):
 
 
 class ChoicesSpecies(NumberSpecies):
-    """"""
-
     def __init__(self, arg_name: str, choices: list):
         self.choices_map = {
             index: choice for index, choice in enumerate(choices)
